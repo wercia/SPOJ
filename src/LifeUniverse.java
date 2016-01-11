@@ -19,9 +19,3 @@ public class LifeUniverse {
 		}
 	}
 }
-
-
-/*
- * int[] input = { 1, 2, 88, 42, 99 }; for (int i = 0; i < input.length; ++i) {
- * if (input[i] != 42) { System.out.println(input[i]); } else { break; } }
- */
