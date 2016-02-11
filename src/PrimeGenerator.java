@@ -1,28 +1,33 @@
 import java.util.Scanner;
 
-public class PrimeGenerator {
-
-	public static void main(String[] args) {
-
+class PrimeGenerator
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
 		Scanner scanner = new Scanner(System.in);
-		int a = scanner.nextInt();
+		int numberOfTestCases = scanner.nextInt();
 
-		for (int i = 1; i <= a; ++i) {
-			int b = scanner.nextInt();
-			int c = scanner.nextInt();
-			for (int j = b; j <= c; ++j) {
-				for (int divisor = 2; divisor <= j; ++divisor) {
-
-					if (j % divisor == 0 && j != 2) {
-						break;
+		for (int i = 1; i <= numberOfTestCases; ++i) {
+			int lowerBound = scanner.nextInt();
+			int upperBound = scanner.nextInt();
+			for (int number = Math.max(2, lowerBound); number <= upperBound; ++number) {
+				boolean isPrime = true;
+				for (int divisor = 2; divisor <= Math.sqrt(number) && isPrime; ++divisor) {
+					if (number % divisor == 0 && number != divisor) {
+						isPrime = false;
 					}
-					if (divisor == j - 1 || j == 2) {
-						System.out.println(j);
-						break;
-					}
+				}
+				if(isPrime) {
+					System.out.println(number);
 				}
 			}
 		}
-		scanner.close();
+		scanner.close();	
 	}
 }
+
+
+
+
+
+
