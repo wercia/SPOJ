@@ -1,33 +1,39 @@
 import java.util.Scanner;
 
-class PrimeGenerator
-{
-	public static void main (String[] args) throws java.lang.Exception
-	{
-		Scanner scanner = new Scanner(System.in);
-		int numberOfTestCases = scanner.nextInt();
+// sito Eratostenesa
+
+public class PrimeGenerator {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		int numberOfTestCases = sc.nextInt();
 
 		for (int i = 1; i <= numberOfTestCases; ++i) {
-			int lowerBound = scanner.nextInt();
-			int upperBound = scanner.nextInt();
-			for (int number = Math.max(2, lowerBound); number <= upperBound; ++number) {
-				boolean isPrime = true;
-				for (int divisor = 2; divisor <= Math.sqrt(number) && isPrime; ++divisor) {
-					if (number % divisor == 0 && number != divisor) {
-						isPrime = false;
+			int lowerBoundary = sc.nextInt();
+			int upperBoundary = sc.nextInt();
+
+			boolean[] numbers = new boolean[upperBoundary + 1];
+
+			for (int k = 2; k <= upperBoundary; ++k) {
+				numbers[k] = true;
+			}
+
+			for (int nextPrime = 2; nextPrime <= upperBoundary; ++nextPrime) {
+				if (numbers[nextPrime]) {
+					for (int j = (nextPrime * 2); j <= upperBoundary; j += nextPrime) {
+						numbers[j] = false;
 					}
 				}
-				if(isPrime) {
-					System.out.println(number);
+			}
+			for (int j = lowerBoundary; j <= upperBoundary; ++j) {
+				if (numbers[j]) {
+					System.out.printf("%d %n", j);
 				}
 			}
+			System.out.println("\n");
 		}
-		scanner.close();	
+
+		sc.close();
 	}
 }
-
-
-
-
-
-
