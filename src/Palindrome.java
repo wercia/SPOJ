@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Palindrome {
@@ -8,27 +9,20 @@ public class Palindrome {
 		int testCases = scanner.nextInt();
 		for(int i = 0; i < testCases; ++i){
 		
-		int number = scanner.nextInt() + 1;
+		BigInteger number = scanner.nextBigInteger().add(BigInteger.valueOf(1));
 		
 		boolean isPalindrome = false;
 		
 		while (!isPalindrome) {
-			String numberString = Integer.toString(number);
-			int noOfDigits = numberString.length();
-			String reversedNo = "";
-			int cutNo = number;
-
-			for (int power = noOfDigits - 1; power >= 0; --power) {
-				int digit = (int) (cutNo / Math.pow(10, power));
-				cutNo = (int) (cutNo % Math.pow(10, power));
-
-				reversedNo = digit + reversedNo;
-			}
+			String numberString = number + "";
+			String reversedNo = new StringBuilder(numberString).reverse().toString();
+			 
 			isPalindrome = numberString.equals(reversedNo);
+			
 			if (isPalindrome) {
 				System.out.println(reversedNo);
 			} else {
-				++number;
+				number = number.add(BigInteger.valueOf(1));
 			}
 		}
 		}
