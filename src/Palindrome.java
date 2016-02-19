@@ -12,21 +12,21 @@ public class Palindrome {
 		
 		boolean isPalindrome = false;
 		
-		while (isPalindrome == false) {
+		while (!isPalindrome) {
 			String numberString = Integer.toString(number);
-			int nbOfDigits = numberString.length();
-			String reversedNb = "";
-			int cuttetNb = number;
+			int noOfDigits = numberString.length();
+			String reversedNo = "";
+			int cutNo = number;
 
-			for (int power = nbOfDigits - 1; power >= 0; --power) {
-				int digit = (int) (cuttetNb / Math.pow(10, power));
-				cuttetNb = (int) (cuttetNb % Math.pow(10, power));
+			for (int power = noOfDigits - 1; power >= 0; --power) {
+				int digit = (int) (cutNo / Math.pow(10, power));
+				cutNo = (int) (cutNo % Math.pow(10, power));
 
-				reversedNb = digit + reversedNb;
+				reversedNo = digit + reversedNo;
 			}
-			isPalindrome = numberString.equals(reversedNb);
+			isPalindrome = numberString.equals(reversedNo);
 			if (isPalindrome) {
-				System.out.println(reversedNb);
+				System.out.println(reversedNo);
 			} else {
 				++number;
 			}
